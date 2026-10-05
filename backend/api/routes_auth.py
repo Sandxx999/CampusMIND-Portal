@@ -28,18 +28,22 @@ from sqlalchemy import func
 @router.post("/login")
 @router_v1.post("/login")
 def login(payload: LoginRequest):
-    login_val = (payload.identifier or payload.email or payload.username or "").strip()
-    if not login_val:
+    ident = (payload.identifier or payload.username or payload.email or "").strip().lower()
+    if not ident:
         raise HTTPException(status_code=400, detail="Must provide username or email")
+        
     with get_db_session() as db:
-        user = db.query(UserAccount).filter(
-            or_(
-                func.lower(UserAccount.email) == login_val.lower(),
-                func.lower(getattr(UserAccount, 'username', UserAccount.id)) == login_val.lower(),
-                func.lower(getattr(UserAccount, 'student_id', getattr(UserAccount, 'username', UserAccount.id))) == login_val.lower(),
-                func.lower(getattr(UserAccount, 'faculty_id', getattr(UserAccount, 'username', UserAccount.id))) == login_val.lower()
-            )
-        ).first()
+        # Robust search across all potential faculty identifiers
+        conditions = [
+            func.lower(UserAccount.email) == ident,
+            func.lower(UserAccount.username) == ident,
+        ]
+        if hasattr(UserAccount, 'faculty_id'):
+            conditions.append(func.lower(UserAccount.faculty_id) == ident)
+        if hasattr(UserAccount, 'id'):
+            conditions.append(func.lower(UserAccount.id) == ident)
+
+        user = db.query(UserAccount).filter(or_(*conditions)).first()
         
         password_field = getattr(user, 'hashed_password', getattr(user, 'password_hash', None)) if user else None
         

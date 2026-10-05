@@ -591,6 +591,11 @@ class UserAccount(Base):
     __tablename__ = "portal_user_accounts"
     
     id = Column(String(50), primary_key=True, index=True)
+    
+    from sqlalchemy.ext.hybrid import hybrid_property
+    @hybrid_property
+    def username(self):
+        return self.id
     role = Column(String(50), nullable=False) # 'student', 'faculty'
     email = Column(String(255), unique=True, index=True, nullable=False)
     password_hash = Column(String(255), nullable=False)
