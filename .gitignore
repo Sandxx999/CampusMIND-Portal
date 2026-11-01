@@ -37,3 +37,5 @@ frontend/.vite/
 Thumbs.db
 node_modules/
 .neon
+
+scratch/

@@ -132,6 +132,8 @@ def login(payload: LoginRequest):
         "vaishnavi": "STU_2024_017",
         "satyajit": "STU_2024_018",
         "faculty": "FAC_DEMO_01",
+        "faculty1": "FAC_DEMO_01",
+        "fac_demo_01": "FAC_DEMO_01",
     }
     resolved_id = alias_map.get(ident_lower, ident_lower)
 
@@ -191,6 +193,9 @@ def login(payload: LoginRequest):
                     "vaishnavi": "STU_2024_017",
                     "stu_2024_018": "STU_2024_018",
                     "satyajit": "STU_2024_018",
+                    "fac_demo_01": "FAC_DEMO_01",
+                    "faculty": "FAC_DEMO_01",
+                    "faculty1": "FAC_DEMO_01",
                 }
                 canonical_user_id = canonical_id_map.get(demo_key.lower(), demo_key)
                 user_record = {

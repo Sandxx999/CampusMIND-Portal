@@ -71,6 +71,15 @@
       "full_name": "Satyajit",
       "profile_photo_url": "https://ui-avatars.com/api/?name=Satyajit",
       "department": "Artificial Intelligence"
+    },
+    {
+      "id": "FAC_DEMO_01",
+      "role": "faculty",
+      "email": "faculty@college.edu",
+      "password_hash": ".WjsgK",
+      "full_name": "Dr. Demo Faculty",
+      "profile_photo_url": "https://ui-avatars.com/api/?name=Dr+Demo+Faculty",
+      "department": "Computer Science and Engineering"
     }
   ],
   "student_profiles": [

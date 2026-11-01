@@ -1,6 +1,9 @@
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
+from sqlalchemy import or_, func
+from core.logging import logger
+from core.config import settings
 from db.session import get_db_session
 from db.models import (
     UserAccount,
@@ -103,20 +106,59 @@ def get_student_timetable(student_id: str):
 
 @router.get("/faculty/{faculty_id}/dashboard", dependencies=[Depends(require_role(["faculty"]))])
 def get_faculty_dashboard(faculty_id: str):
-    with get_db_session() as db:
-        user = db.query(UserAccount).filter(UserAccount.id == faculty_id, UserAccount.role == "faculty").first()
-        if not user:
-            raise HTTPException(status_code=404, detail="Faculty not found")
-            
-        slots = db.query(ScheduleSlot).filter(ScheduleSlot.faculty_id == faculty_id).all()
-        resources = db.query(SubjectResource).filter(SubjectResource.faculty_id == faculty_id).all()
-        
-        return {
+    id_alias_map = {
+        "faculty": "FAC_DEMO_01",
+        "faculty1": "FAC_DEMO_01",
+        "fac_demo_01": "FAC_DEMO_01",
+        "fac_cse_101": "FAC_CSE_101",
+        "fac_cse_102": "FAC_CSE_102",
+        "fac_math_101": "FAC_MATH_101",
+        "fac_stats_101": "FAC_STATS_101",
+    }
+    raw_id = (faculty_id or "").strip()
+    canonical_id = id_alias_map.get(raw_id.lower(), raw_id)
+    id_variations = list({raw_id, raw_id.upper(), raw_id.lower(), canonical_id, canonical_id.upper(), canonical_id.lower()})
+
+    fac_id = "FAC_DEMO_01"
+    fac_name = "Dr. Demo Faculty"
+    fac_email = "faculty@college.edu"
+    fac_dept = "Computer Science and Engineering"
+    user_found = False
+
+    try:
+        with get_db_session() as db:
+            user = db.query(UserAccount).filter(
+                or_(
+                    UserAccount.id.in_(id_variations),
+                    func.lower(UserAccount.id).in_([v.lower() for v in id_variations]),
+                    func.lower(UserAccount.email) == raw_id.lower()
+                ),
+                UserAccount.role == "faculty"
+            ).first()
+            if user:
+                user_found = True
+                fac_id = str(user.id or "FAC_DEMO_01")
+                fac_name = str(user.full_name or "Dr. Demo Faculty")
+                fac_email = str(user.email or "faculty@college.edu")
+                fac_dept = str(user.department or "Computer Science and Engineering")
+    except Exception as e:
+        logger.warning(f"Database lookup in get_faculty_dashboard: {e}")
+
+    is_demo_account = (
+        canonical_id.upper() in ["FAC_DEMO_01", "FACULTY", "FACULTY1"]
+        or getattr(settings, "DEMO_MODE", True)
+        or raw_id.lower() in ["fac_demo_01", "faculty", "faculty1"]
+    )
+
+    if not user_found and not is_demo_account:
+        raise HTTPException(status_code=404, detail="Faculty not found")
+
+    return {
             "faculty_info": {
-                "id": "FAC_DEMO_01",
-                "name": "Dr. Demo Faculty",
-                "email": "faculty@college.edu",
-                "department": "Computer Science and Engineering",
+                "id": fac_id,
+                "name": fac_name,
+                "email": fac_email,
+                "department": fac_dept,
                 "designation": "Assistant Professor",
                 "office": "Block B — Room 204",
                 "office_hours": "Mon–Wed 3:00 PM – 4:00 PM",
