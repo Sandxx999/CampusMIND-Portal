@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { getStoredUser, logoutUser, fetchStudentProfile, fetchStudentMarks, fetchStudentTimetable, fetchFacultyDashboard, fetchNotices, changePassword, fetchGraphElements, fetchGraphStats, postPortalChat, fetchStudentPerformance } from './lib/api';
+import { getStoredUser, logoutUser, fetchStudentProfile, fetchStudentMarks, fetchStudentTimetable, fetchFacultyDashboard, fetchNotices, changePassword, postPortalChat, fetchStudentPerformance } from './lib/api';
 import axios from 'axios';
-import CytoscapeComponent from 'react-cytoscapejs';
 import { Book, Calendar, ClipboardList, LayoutDashboard, LogOut, Network, Shield, Bell, X, Check, Search, MessageCircle, Sparkles, Send, ChevronDown, ChevronUp, Clock, MapPin, User, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
@@ -214,107 +213,9 @@ function MainDashboard({ setDrawerState }) {
   );
 }
 
-// --- Knowledge Graph Explorer ---
-function GraphExplorer() {
-  const [elements, setElements] = useState([]);
-  const [selectedNode, setSelectedNode] = useState(null);
-
-  useEffect(() => {
-    fetchGraphElements(150).then(data => {
-      setElements([
-        ...data.nodes.map(n => ({ data: { id: n.id, label: n.label, type: n.type, ...n.properties } })),
-        ...data.edges.map(e => ({ data: { source: e.source, target: e.target, label: e.label } }))
-      ]);
-    }).catch(console.error);
-  }, []);
-
-  const layout = { name: 'cose', animate: false };
-  const style = [
-    { selector: 'node', style: {
-      'label': 'data(label)',
-      'background-color': (ele) => {
-        const type = ele.data('type');
-        if(type === 'Course') return '#3b82f6';
-        if(type === 'Faculty') return '#10b981';
-        if(type === 'Student') return '#8b5cf6';
-        if(type === 'Department') return '#f59e0b';
-        return '#64748b';
-      },
-      'color': '#0f172a',
-      'text-valign': 'bottom',
-      'text-margin-y': 5,
-      'font-size': '12px',
-      'font-family': 'Inter',
-      'text-background-color': '#ffffff',
-      'text-background-opacity': 0.8,
-      'text-background-padding': 2,
-      'text-background-shape': 'roundrectangle'
-    }},
-    { selector: 'edge', style: {
-      'width': 2,
-      'line-color': '#cbd5e1',
-      'target-arrow-color': '#cbd5e1',
-      'target-arrow-shape': 'triangle',
-      'curve-style': 'bezier',
-      'label': 'data(label)',
-      'font-size': '10px',
-      'text-rotation': 'autorotate',
-      'color': '#94a3b8',
-      'text-background-color': '#ffffff',
-      'text-background-opacity': 0.8
-    }}
-  ];
-
-  return (
-    <div className="h-[calc(100vh-140px)] w-full rounded-3xl overflow-hidden glass-card relative bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNlMmU4ZjAiLz48L3N2Zz4=')]">
-      {elements.length > 0 && (
-        <CytoscapeComponent 
-          elements={elements} 
-          style={{ width: "100%", height: "600px", minHeight: "600px", position: "relative" }} 
-          layout={layout} 
-          stylesheet={style}
-          cy={cy => {
-            cy.resize();
-            cy.fit();
-            cy.on('tap', 'node', (evt) => setSelectedNode(evt.target.data()));
-            cy.on('tap', (evt) => { if(evt.target === cy) setSelectedNode(null); });
-          }}
-        />
-      )}
-      <AnimatePresence>
-        {selectedNode && (
-          <motion.div 
-            initial={{ x: 300, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: 300, opacity: 0 }}
-            className="absolute top-4 right-4 w-72 glass-card p-5 rounded-2xl border border-white shadow-xl"
-          >
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="font-bold text-slate-800 text-lg">{selectedNode.label}</h3>
-              <button onClick={() => setSelectedNode(null)} className="text-slate-400 hover:text-slate-600"><X size={16}/></button>
-            </div>
-            <div className="inline-block px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs font-semibold mb-4">{selectedNode.type}</div>
-            <div className="space-y-2 text-sm text-slate-600">
-              {Object.entries(selectedNode).map(([k, v]) => {
-                if (['id', 'label', 'type'].includes(k)) return null;
-                return <div key={k}><span className="font-semibold capitalize">{k.replace('_', ' ')}:</span> {String(v)}</div>
-              })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4 glass-card px-4 py-2 rounded-full border border-white">
-        <div className="flex items-center gap-1 text-xs font-semibold text-slate-600"><div className="w-3 h-3 rounded-full bg-[#4f46e5]"></div> Courses</div>
-        <div className="flex items-center gap-1 text-xs font-semibold text-slate-600"><div className="w-3 h-3 rounded-full bg-[#059669]"></div> Faculty</div>
-        <div className="flex items-center gap-1 text-xs font-semibold text-slate-600"><div className="w-3 h-3 rounded-full bg-[#9333ea]"></div> Students</div>
-        <div className="flex items-center gap-1 text-xs font-semibold text-slate-600"><div className="w-3 h-3 rounded-full bg-[#d97706]"></div> Depts</div>
-      </div>
-    </div>
-  );
-}
-
 // --- Main App Root ---
 export default function App() {
   const [user, setUser] = useState(null);
-  const [activeView, setActiveView] = useState('dashboard'); // dashboard | graph
   const [drawers, setDrawers] = useState({ notice: false, exam: false, timetable: false, password: false });
 
   useEffect(() => {
@@ -340,8 +241,7 @@ export default function App() {
               <span className="text-2xl">🎓</span> CampusMIND Portal
             </h1>
             <nav className="hidden md:flex gap-1 bg-slate-100/50 p-1 rounded-full border border-slate-200">
-              <button onClick={() => setActiveView('dashboard')} className={`px-4 py-1.5 rounded-full text-sm font-semibold transition ${activeView === 'dashboard' ? 'bg-white shadow-sm text-sky-600' : 'text-slate-500 hover:text-slate-800'}`}>📊 Dashboard</button>
-              <button onClick={() => setActiveView('graph')} className={`px-4 py-1.5 rounded-full text-sm font-semibold transition ${activeView === 'graph' ? 'bg-white shadow-sm text-sky-600' : 'text-slate-500 hover:text-slate-800'}`}>🌐 Knowledge Graph</button>
+              <button className="px-4 py-1.5 rounded-full text-sm font-semibold bg-white shadow-sm text-sky-600">📊 Dashboard</button>
               <button onClick={() => setDrawers(p => ({...p, notice: true}))} className="px-4 py-1.5 rounded-full text-sm font-semibold text-slate-500 hover:text-slate-800 transition">📢 Notice Board</button>
             </nav>
           </div>
@@ -364,9 +264,11 @@ export default function App() {
       {/* Main Content Area */}
       <main className="flex-1 pt-28 px-6 pb-24 overflow-y-auto relative z-10">
         <div className="max-w-7xl mx-auto h-full">
-          {activeView === 'dashboard' ? (
-            user.role === 'faculty' ? <FacultyDashboard user={user} setDrawerState={setDrawers} /> : <StudentDashboard setDrawerState={setDrawers} />
-          ) : <GraphExplorer />}
+          {user.role === 'faculty' ? (
+            <FacultyDashboard user={user} setDrawerState={setDrawers} />
+          ) : (
+            <StudentDashboard setDrawerState={setDrawers} />
+          )}
         </div>
       </main>
 

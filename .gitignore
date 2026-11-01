@@ -36,3 +36,4 @@ frontend/.vite/
 *.swo
 Thumbs.db
 node_modules/
+.neon

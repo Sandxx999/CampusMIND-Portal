@@ -44,6 +44,33 @@
       "full_name": "Dr. Leslie Alexander",
       "profile_photo_url": "https://ui-avatars.com/api/?name=Leslie+Alexander",
       "department": "Statistics"
+    },
+    {
+      "id": "STU_2024_016",
+      "role": "student",
+      "email": "sindhu.viplav@campus.edu",
+      "password_hash": "$2b$12$ysdf8nSllnNI1a74qqFgXuq7RKL8Fxo5Qw.mw2JtkNpKVk5X7uNY2",
+      "full_name": "Sindhu Viplav",
+      "profile_photo_url": "https://ui-avatars.com/api/?name=Sindhu+Viplav",
+      "department": "Artificial Intelligence"
+    },
+    {
+      "id": "STU_2024_017",
+      "role": "student",
+      "email": "vaishnavi@campus.edu",
+      "password_hash": "$2b$12$ysdf8nSllnNI1a74qqFgXuq7RKL8Fxo5Qw.mw2JtkNpKVk5X7uNY2",
+      "full_name": "Vaishnavi",
+      "profile_photo_url": "https://ui-avatars.com/api/?name=Vaishnavi",
+      "department": "Artificial Intelligence"
+    },
+    {
+      "id": "STU_2024_018",
+      "role": "student",
+      "email": "satyajit@campus.edu",
+      "password_hash": "$2b$12$ysdf8nSllnNI1a74qqFgXuq7RKL8Fxo5Qw.mw2JtkNpKVk5X7uNY2",
+      "full_name": "Satyajit",
+      "profile_photo_url": "https://ui-avatars.com/api/?name=Satyajit",
+      "department": "Artificial Intelligence"
     }
   ],
   "student_profiles": [
@@ -58,6 +85,42 @@
       "location": "Hyderabad",
       "academic_status": "Active",
       "links": "{\"github\": \"https://github.com\", \"linkedin\": \"https://linkedin.com\", \"portfolio\": \"https://portfolio.com\"}"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "roll_number": "24AI016",
+      "program": "B.Tech Artificial Intelligence",
+      "current_semester": 5,
+      "batch_year": "2024-2028",
+      "overall_attendance_pct": 93.5,
+      "bio": "AI student researcher specializing in Natural Language Processing, Large Language Models, and Multimodal Intelligence systems.",
+      "location": "Hyderabad",
+      "academic_status": "Active",
+      "links": "{\"github\": \"https://github.com/sindhu-viplav\", \"linkedin\": \"https://linkedin.com/in/sindhu-viplav\", \"portfolio\": \"https://sindhuviplav.dev\"}"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "roll_number": "24AI017",
+      "program": "B.Tech Artificial Intelligence",
+      "current_semester": 5,
+      "batch_year": "2024-2028",
+      "overall_attendance_pct": 91.0,
+      "bio": "Aspiring AI engineer enthusiastic about Computer Vision, Edge AI, Autonomous Systems, and embedded neural networks.",
+      "location": "Hyderabad",
+      "academic_status": "Active",
+      "links": "{\"github\": \"https://github.com/vaishnavi-ai\", \"linkedin\": \"https://linkedin.com/in/vaishnavi-ai\", \"portfolio\": \"https://vaishnavi.dev\"}"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "roll_number": "24AI018",
+      "program": "B.Tech Artificial Intelligence",
+      "current_semester": 5,
+      "batch_year": "2024-2028",
+      "overall_attendance_pct": 87.5,
+      "bio": "Data science practitioner and AI full-stack developer dedicated to Big Data Analytics, Predictive Modeling, and Distributed ML systems.",
+      "location": "Hyderabad",
+      "academic_status": "Active",
+      "links": "{\"github\": \"https://github.com/satyajit-ds\", \"linkedin\": \"https://linkedin.com/in/satyajit-ds\", \"portfolio\": \"https://satyajit.dev\"}"
     }
   ],
   "exam_results": [
@@ -99,6 +162,126 @@
       "marks_obtained": 39,
       "max_marks": 40,
       "grade": "A+",
+      "status": "Pass"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "exam_type": "Mid Term 1",
+      "course_code": "AI301",
+      "course_name": "Deep Learning",
+      "marks_obtained": 39.0,
+      "max_marks": 40.0,
+      "grade": "A+",
+      "status": "Pass"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "exam_type": "Mid Term 1",
+      "course_code": "CS201",
+      "course_name": "Data Structures",
+      "marks_obtained": 37.0,
+      "max_marks": 40.0,
+      "grade": "A+",
+      "status": "Pass"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "exam_type": "Mid Term 1",
+      "course_code": "MATH202",
+      "course_name": "Discrete Math",
+      "marks_obtained": 36.0,
+      "max_marks": 40.0,
+      "grade": "A",
+      "status": "Pass"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "exam_type": "Mid Term 1",
+      "course_code": "AI302",
+      "course_name": "Knowledge Representation",
+      "marks_obtained": 40.0,
+      "max_marks": 40.0,
+      "grade": "A+",
+      "status": "Pass"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "exam_type": "Mid Term 1",
+      "course_code": "AI301",
+      "course_name": "Deep Learning",
+      "marks_obtained": 38.0,
+      "max_marks": 40.0,
+      "grade": "A+",
+      "status": "Pass"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "exam_type": "Mid Term 1",
+      "course_code": "CS201",
+      "course_name": "Data Structures",
+      "marks_obtained": 36.0,
+      "max_marks": 40.0,
+      "grade": "A",
+      "status": "Pass"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "exam_type": "Mid Term 1",
+      "course_code": "MATH202",
+      "course_name": "Discrete Math",
+      "marks_obtained": 35.0,
+      "max_marks": 40.0,
+      "grade": "A",
+      "status": "Pass"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "exam_type": "Mid Term 1",
+      "course_code": "AI302",
+      "course_name": "Knowledge Representation",
+      "marks_obtained": 38.0,
+      "max_marks": 40.0,
+      "grade": "A+",
+      "status": "Pass"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "exam_type": "Mid Term 1",
+      "course_code": "AI301",
+      "course_name": "Deep Learning",
+      "marks_obtained": 36.0,
+      "max_marks": 40.0,
+      "grade": "A",
+      "status": "Pass"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "exam_type": "Mid Term 1",
+      "course_code": "CS201",
+      "course_name": "Data Structures",
+      "marks_obtained": 38.0,
+      "max_marks": 40.0,
+      "grade": "A+",
+      "status": "Pass"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "exam_type": "Mid Term 1",
+      "course_code": "MATH202",
+      "course_name": "Discrete Math",
+      "marks_obtained": 37.0,
+      "max_marks": 40.0,
+      "grade": "A+",
+      "status": "Pass"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "exam_type": "Mid Term 1",
+      "course_code": "AI302",
+      "course_name": "Knowledge Representation",
+      "marks_obtained": 36.0,
+      "max_marks": 40.0,
+      "grade": "A",
       "status": "Pass"
     }
   ],
@@ -240,6 +423,174 @@
       "category": "Tools",
       "proficiency_pct": 65,
       "verified": true
+    },
+    {
+      "student_id": "STU_2024_016",
+      "name": "Python",
+      "category": "Programming",
+      "proficiency_pct": 94,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_016",
+      "name": "PyTorch",
+      "category": "AI/ML",
+      "proficiency_pct": 88,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_016",
+      "name": "NLP & LLMs",
+      "category": "AI/ML",
+      "proficiency_pct": 91,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_016",
+      "name": "Hugging Face",
+      "category": "AI/ML",
+      "proficiency_pct": 85,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_016",
+      "name": "FastAPI",
+      "category": "Web",
+      "proficiency_pct": 82,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_016",
+      "name": "LangChain",
+      "category": "AI/ML",
+      "proficiency_pct": 86,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_016",
+      "name": "React",
+      "category": "Web",
+      "proficiency_pct": 75,
+      "verified": false
+    },
+    {
+      "student_id": "STU_2024_016",
+      "name": "Docker & MLOps",
+      "category": "Tools",
+      "proficiency_pct": 72,
+      "verified": false
+    },
+    {
+      "student_id": "STU_2024_017",
+      "name": "Python",
+      "category": "Programming",
+      "proficiency_pct": 92,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_017",
+      "name": "OpenCV",
+      "category": "AI/ML",
+      "proficiency_pct": 89,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_017",
+      "name": "PyTorch",
+      "category": "AI/ML",
+      "proficiency_pct": 84,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_017",
+      "name": "YOLO & Object Detection",
+      "category": "AI/ML",
+      "proficiency_pct": 87,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_017",
+      "name": "TensorFlow Lite",
+      "category": "AI/ML",
+      "proficiency_pct": 78,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_017",
+      "name": "ROS2",
+      "category": "Tools",
+      "proficiency_pct": 72,
+      "verified": false
+    },
+    {
+      "student_id": "STU_2024_017",
+      "name": "C++",
+      "category": "Programming",
+      "proficiency_pct": 80,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_017",
+      "name": "Docker",
+      "category": "Tools",
+      "proficiency_pct": 70,
+      "verified": false
+    },
+    {
+      "student_id": "STU_2024_018",
+      "name": "Python",
+      "category": "Programming",
+      "proficiency_pct": 90,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_018",
+      "name": "SQL & PostgreSQL",
+      "category": "Programming",
+      "proficiency_pct": 88,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_018",
+      "name": "Apache Spark",
+      "category": "Tools",
+      "proficiency_pct": 80,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_018",
+      "name": "Machine Learning",
+      "category": "AI/ML",
+      "proficiency_pct": 85,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_018",
+      "name": "FastAPI",
+      "category": "Web",
+      "proficiency_pct": 86,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_018",
+      "name": "React",
+      "category": "Web",
+      "proficiency_pct": 76,
+      "verified": false
+    },
+    {
+      "student_id": "STU_2024_018",
+      "name": "Scikit-Learn",
+      "category": "AI/ML",
+      "proficiency_pct": 88,
+      "verified": true
+    },
+    {
+      "student_id": "STU_2024_018",
+      "name": "Kubernetes",
+      "category": "Tools",
+      "proficiency_pct": 68,
+      "verified": false
     }
   ],
   "projects": [
@@ -275,6 +626,105 @@
       "status": "Completed",
       "github_url": "https://github.com",
       "live_demo_url": ""
+    },
+    {
+      "student_id": "STU_2024_016",
+      "title": "NeuroLingua",
+      "category": "AI / NLP",
+      "description": "Multilingual Indic LLM Fine-Tuner for Academic Translation and cross-lingual comprehension.",
+      "role": "Lead Researcher",
+      "technologies": "[\"Python\", \"PyTorch\", \"Hugging Face\", \"FastAPI\"]",
+      "status": "Active",
+      "github_url": "https://github.com/sindhu-viplav/neurolingua",
+      "live_demo_url": "https://neurolingua.demo.ai"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "title": "DocuInsight AI",
+      "category": "AI / Full Stack",
+      "description": "Enterprise Document Question Answering using RAG and Vector Embeddings.",
+      "role": "Full Stack Developer",
+      "technologies": "[\"LangChain\", \"ChromaDB\", \"FastAPI\", \"React\"]",
+      "status": "Completed",
+      "github_url": "https://github.com/sindhu-viplav/docuinsight",
+      "live_demo_url": ""
+    },
+    {
+      "student_id": "STU_2024_016",
+      "title": "AI Automated Code Reviewer",
+      "category": "Dev Tools",
+      "description": "Transformer-based AST static vulnerability detector and code improvement suggester.",
+      "role": "Developer",
+      "technologies": "[\"Python\", \"Transformers\", \"GitHub Actions\"]",
+      "status": "Completed",
+      "github_url": "https://github.com/sindhu-viplav/code-reviewer",
+      "live_demo_url": ""
+    },
+    {
+      "student_id": "STU_2024_017",
+      "title": "VisionGuard",
+      "category": "Computer Vision / Edge AI",
+      "description": "Real-Time Campus Edge Surveillance & Anomaly Detection system with sub-15ms inference.",
+      "role": "Lead Architect",
+      "technologies": "[\"Python\", \"OpenCV\", \"YOLOv8\", \"PyTorch\", \"FastAPI\"]",
+      "status": "Active",
+      "github_url": "https://github.com/vaishnavi-ai/visionguard",
+      "live_demo_url": "https://visionguard.demo.ai"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "title": "Autonomous Drone Navigator",
+      "category": "Robotics & AI",
+      "description": "Visual SLAM and Obstacle Avoidance Simulation for indoor GPS-denied environments.",
+      "role": "Developer",
+      "technologies": "[\"ROS2\", \"C++\", \"Python\", \"Gazebo\"]",
+      "status": "Completed",
+      "github_url": "https://github.com/vaishnavi-ai/drone-slam",
+      "live_demo_url": ""
+    },
+    {
+      "student_id": "STU_2024_017",
+      "title": "MediScan AI",
+      "category": "Healthcare AI",
+      "description": "Automated Dermatological Lesion Classifier using quantized MobileNet for mobile clinics.",
+      "role": "Developer",
+      "technologies": "[\"TensorFlow Lite\", \"React\", \"Flask\"]",
+      "status": "Completed",
+      "github_url": "https://github.com/vaishnavi-ai/mediscan",
+      "live_demo_url": ""
+    },
+    {
+      "student_id": "STU_2024_018",
+      "title": "DataPulse",
+      "category": "Big Data / AI",
+      "description": "Distributed Streaming Predictive Analytics Engine processing millions of campus IoT events.",
+      "role": "Lead Engineer",
+      "technologies": "[\"Apache Kafka\", \"Spark\", \"FastAPI\", \"React\"]",
+      "status": "Active",
+      "github_url": "https://github.com/satyajit-ds/datapulse",
+      "live_demo_url": "https://datapulse.demo.ai"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "title": "Campus Transit Optimizer",
+      "category": "Predictive Analytics",
+      "description": "Real-Time Shuttle Dispatch Prediction Algorithm reducing passenger wait times by 28%.",
+      "role": "Developer",
+      "technologies": "[\"Python\", \"XGBoost\", \"PostgreSQL\", \"PostGIS\"]",
+      "status": "Completed",
+      "github_url": "https://github.com/satyajit-ds/transit-opt",
+      "live_demo_url": ""
+    },
+    {
+      "student_id": "STU_2024_018",
+      "title": "Algorithmic Trading Backtester",
+      "category": "FinTech",
+      "description": "Quantitative Sentiment & Historical Price Analysis platform for algorithmic portfolio balancing.",
+      "role": "Developer",
+      "technologies": "[\"Python\", \"Pandas\", \"FastAPI\", \"ChartJS\"]",
+      "status": "Completed",
+      "github_url": "https://github.com/satyajit-ds/quant-backtest",
+      "live_demo_url": ""
     }
   ],
   "certifications": [
@@ -304,6 +754,87 @@
       "credential_id": "IOT123",
       "credential_url": "https://example.com",
       "skills": "[\"IoT\"]"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "name": "Natural Language Processing Specialization",
+      "issuer": "DeepLearning.AI / Coursera",
+      "issue_date": "2025-02-15",
+      "credential_id": "NLP_DL_2025",
+      "credential_url": "https://coursera.org",
+      "skills": "[\"NLP\", \"Transformers\", \"Deep Learning\"]"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "name": "AWS Certified Machine Learning - Specialty",
+      "issuer": "AWS",
+      "issue_date": "2025-06-20",
+      "credential_id": "AWS_MLS_789",
+      "credential_url": "https://aws.amazon.com",
+      "skills": "[\"AWS\", \"Cloud ML\"]"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "name": "Fundamentals of Deep Learning",
+      "issuer": "NVIDIA Deep Learning Institute",
+      "issue_date": "2025-09-10",
+      "credential_id": "NV_DLI_442",
+      "credential_url": "https://nvidia.com",
+      "skills": "[\"CUDA\", \"PyTorch\"]"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "name": "OpenCV Computer Vision Specialist",
+      "issuer": "OpenCV University",
+      "issue_date": "2025-03-12",
+      "credential_id": "OCV_CV_910",
+      "credential_url": "https://opencv.org",
+      "skills": "[\"OpenCV\", \"Computer Vision\"]"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "name": "Professional Machine Learning Engineer",
+      "issuer": "Google Cloud",
+      "issue_date": "2025-07-18",
+      "credential_id": "GCP_ML_551",
+      "credential_url": "https://cloud.google.com",
+      "skills": "[\"GCP\", \"Vertex AI\", \"MLOps\"]"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "name": "TensorFlow Developer Professional Certificate",
+      "issuer": "DeepLearning.AI / Coursera",
+      "issue_date": "2025-09-05",
+      "credential_id": "TF_DEV_882",
+      "credential_url": "https://coursera.org",
+      "skills": "[\"TensorFlow\", \"Deep Learning\"]"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "name": "Certified Associate Developer for Apache Spark",
+      "issuer": "Databricks",
+      "issue_date": "2025-04-10",
+      "credential_id": "DB_SPARK_311",
+      "credential_url": "https://databricks.com",
+      "skills": "[\"Apache Spark\", \"Big Data\", \"Python\"]"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "name": "Azure Data Scientist Associate",
+      "issuer": "Microsoft",
+      "issue_date": "2025-08-14",
+      "credential_id": "AZ_DS_100",
+      "credential_url": "https://microsoft.com",
+      "skills": "[\"Azure\", \"Data Science\", \"MLOps\"]"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "name": "IBM Data Science Professional Certificate",
+      "issuer": "IBM / Coursera",
+      "issue_date": "2025-10-02",
+      "credential_id": "IBM_DS_774",
+      "credential_url": "https://coursera.org",
+      "skills": "[\"Data Science\", \"Python\", \"SQL\"]"
     }
   ],
   "experiences": [
@@ -316,6 +847,36 @@
       "end_date": "Aug 2026",
       "responsibilities": "Developed ML pipelines.",
       "technologies": "[\"Python\", \"Scikit-Learn\"]"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "organization": "IndoGen AI Labs",
+      "role": "AI Research Intern",
+      "experience_type": "Internship",
+      "start_date": "Jun 2026",
+      "end_date": "Aug 2026",
+      "responsibilities": "Designed and benchmarked parameter-efficient LoRA adapters for domain-specific LLM fine-tuning.",
+      "technologies": "[\"Python\", \"PyTorch\", \"LoRA\", \"Hugging Face\"]"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "organization": "Apex Robotics Systems",
+      "role": "Computer Vision Engineering Intern",
+      "experience_type": "Internship",
+      "start_date": "Jun 2026",
+      "end_date": "Aug 2026",
+      "responsibilities": "Deployed real-time inference pipelines on NVIDIA Jetson Orin edge nodes.",
+      "technologies": "[\"Python\", \"OpenCV\", \"TensorRT\", \"Jetson Orin\"]"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "organization": "CognitiveScale Analytics",
+      "role": "Data Science Intern",
+      "experience_type": "Internship",
+      "start_date": "Jun 2026",
+      "end_date": "Aug 2026",
+      "responsibilities": "Engineered distributed ETL pipelines and implemented customer churn prediction models.",
+      "technologies": "[\"Python\", \"Apache Spark\", \"Scikit-Learn\", \"PostgreSQL\"]"
     }
   ],
   "achievements": [
@@ -332,6 +893,48 @@
       "category": "Academic",
       "date": "2026-05-01",
       "organization": "IcfaiTech"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "title": "1st Place - Smart India AI Ideathon 2025",
+      "category": "Competition",
+      "date": "2025-11-15",
+      "organization": "Ministry of Education"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "title": "Dean's List for Academic Merit (Top 3% Cohort)",
+      "category": "Academic",
+      "date": "2026-05-20",
+      "organization": "IcfaiTech"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "title": "Winner - Inter-College Computer Vision Challenge 2025",
+      "category": "Competition",
+      "date": "2025-10-22",
+      "organization": "IEEE Computer Society"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "title": "Second Runner-up - Intel Edge AI Hackathon",
+      "category": "Competition",
+      "date": "2026-03-14",
+      "organization": "Intel Innovators"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "title": "1st Place - National Data Science League 2025",
+      "category": "Competition",
+      "date": "2025-12-05",
+      "organization": "Analytics India Magazine"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "title": "Best Technical Paper Presentation",
+      "category": "Academic",
+      "date": "2026-04-18",
+      "organization": "IEEE Student Symposium"
     }
   ],
   "activities": [
@@ -340,6 +943,24 @@
       "organization": "AI Club",
       "role": "Technical Lead",
       "description": "Led weekly technical workshops."
+    },
+    {
+      "student_id": "STU_2024_016",
+      "organization": "Women in AI & Tech Student Chapter",
+      "role": "President",
+      "description": "Organized campus-wide AI hackathons and technical mentorship workshops."
+    },
+    {
+      "student_id": "STU_2024_017",
+      "organization": "Robotics & Automation Club",
+      "role": "Vice President",
+      "description": "Mentored junior students in autonomous robotics and edge computing."
+    },
+    {
+      "student_id": "STU_2024_018",
+      "organization": "ACM Student Chapter",
+      "role": "Treasurer",
+      "description": "Managed chapter finances and organized competitive programming bootcamps."
     }
   ],
   "career_profiles": [
@@ -349,6 +970,27 @@
       "target_industry": "Technology / AI",
       "career_interests": "[\"Machine Learning\", \"Generative AI\", \"Software Engineering\"]",
       "career_readiness_pct": 78
+    },
+    {
+      "student_id": "STU_2024_016",
+      "target_role": "NLP Research Engineer",
+      "target_industry": "Generative AI / Research & Development",
+      "career_interests": "[\"LLM Alignment\", \"Multimodal Transformers\", \"Retrieval-Augmented Generation\", \"Agentic Workflows\"]",
+      "career_readiness_pct": 86
+    },
+    {
+      "student_id": "STU_2024_017",
+      "target_role": "Computer Vision Engineer",
+      "target_industry": "Autonomous Mobility & Robotics",
+      "career_interests": "[\"Edge Inference\", \"Visual SLAM\", \"Autonomous Navigation\", \"Medical Image Analysis\"]",
+      "career_readiness_pct": 82
+    },
+    {
+      "student_id": "STU_2024_018",
+      "target_role": "Machine Learning / Data Platform Engineer",
+      "target_industry": "FinTech / Enterprise Data Intelligence",
+      "career_interests": "[\"Distributed Computing\", \"MLOps\", \"Predictive Analytics\", \"Large-Scale Feature Stores\"]",
+      "career_readiness_pct": 80
     }
   ],
   "upcoming_tasks": [
@@ -371,6 +1013,69 @@
       "title": "AI302 Midterm Exam 2",
       "course": "AI302",
       "due_date": "Oct 06",
+      "priority": "upcoming"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "title": "AI301 Deep Learning Research Term Paper",
+      "course": "AI301",
+      "due_date": "Oct 04",
+      "priority": "urgent"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "title": "NLP Transformer Attention Mechanism Assignment",
+      "course": "AI302",
+      "due_date": "Oct 07",
+      "priority": "due_soon"
+    },
+    {
+      "student_id": "STU_2024_016",
+      "title": "Knowledge Graphs Mini-Project Presentation",
+      "course": "AI302",
+      "due_date": "Oct 11",
+      "priority": "upcoming"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "title": "Computer Vision Edge Inference Lab Submission",
+      "course": "AI303",
+      "due_date": "Oct 03",
+      "priority": "urgent"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "title": "Data Structures Tree Traversal Quiz",
+      "course": "CS201",
+      "due_date": "Oct 06",
+      "priority": "due_soon"
+    },
+    {
+      "student_id": "STU_2024_017",
+      "title": "Deep Learning CNN Architecture Implementation",
+      "course": "AI301",
+      "due_date": "Oct 09",
+      "priority": "upcoming"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "title": "Machine Learning Model Performance Analysis",
+      "course": "AI303",
+      "due_date": "Oct 04",
+      "priority": "urgent"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "title": "Discrete Mathematics Graph Theory Assignment",
+      "course": "MATH202",
+      "due_date": "Oct 08",
+      "priority": "due_soon"
+    },
+    {
+      "student_id": "STU_2024_018",
+      "title": "Database Query Optimization & Indexing Lab",
+      "course": "CS201",
+      "due_date": "Oct 12",
       "priority": "upcoming"
     }
   ]

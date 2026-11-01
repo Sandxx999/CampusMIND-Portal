@@ -5,7 +5,6 @@ from okf.graph_agent import OKFGraphAgent
 class OKFHybridRetriever:
     def __init__(self):
         self.graph_agent = OKFGraphAgent()
-        # Legacy retriever deprecated
         
     def query(self, query: str, user_attributes: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
@@ -30,11 +29,28 @@ class OKFHybridRetriever:
             
         logger.info("Graph Agent returned no entities or failed to answer. Executing graceful text fallback hook.")
         
-        # Legacy ChromaDB vector retrieval deprecated in Phase 4
-        # Returning graceful fallback string to avoid exceptions
+        try:
+            from rag.retriever import get_retriever
+            retriever = get_retriever()
+            role = user_attributes.get("role", "student")
+            chunks, max_confidence = retriever.retrieve_chunks(query, user_role=role)
+            if chunks:
+                snippets = [c.get("snippet", "") for c in chunks if c.get("snippet")]
+                answer = "\n\n".join(snippets)
+                return {
+                    "source": "text_rag",
+                    "reasoning": f"Retrieved {len(chunks)} institutional document chunks from text database.",
+                    "answer": answer,
+                    "context": chunks,
+                    "extracted_anchors": [],
+                    "confidence": max_confidence,
+                }
+        except Exception as e:
+            logger.warning(f"Fallback text retrieval error: {e}")
+            
         return {
             "source": "fallback_text",
-            "reasoning": "Fallback to text RAG deprecated. Entities not found in graph.",
+            "reasoning": "Entities not found in graph and no matching document chunks in text database.",
             "answer": "I don't have information on that in the official campus database.",
             "context": [],
             "extracted_anchors": []

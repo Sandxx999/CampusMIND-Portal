@@ -12,6 +12,8 @@ def get_current_user(token: str = Depends(oauth2_scheme)) -> dict:
             detail="Could not validate credentials",
             headers={"WWW-Authenticate": "Bearer"},
         )
+    if "id" not in payload and "sub" in payload:
+        payload["id"] = payload["sub"]
     return payload
 
 def require_role(allowed_roles: list[str]):

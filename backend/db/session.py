@@ -135,7 +135,7 @@ def get_db_path() -> str:
     if url.startswith("sqlite:///"):
         path = url.replace("sqlite:///", "", 1)
         return os.path.abspath(path)
-    return url
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "campusmind.db"))
 
 
 def get_db_connection() -> sqlite3.Connection:

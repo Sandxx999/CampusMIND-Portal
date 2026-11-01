@@ -19,22 +19,28 @@ class AgentResponse(BaseModel):
     answer: str = Field(description="The final synthesized answer to the user's question.")
 
 class OKFGraphAgent:
-    def __init__(self, model_name: str = "gemini-2.0-flash"):
-        self.client = genai.Client(api_key=settings.GEMINI_API_KEY)
+    def __init__(self, model_name: str = "gemini-2.5-flash"):
         self.model_name = model_name
+        try:
+            self.client = genai.Client(api_key=settings.GEMINI_API_KEY)
+        except Exception:
+            self.client = None
 
     def extract_anchors(self, query: str) -> List[str]:
+        if not self.client or not settings.GEMINI_API_KEY:
+            return []
+
         prompt = f"""
         Extract canonical knowledge graph entity IDs from the user query.
         Examples: "CS201" -> "course:cs201", "CSE department" -> "dept:cse", "Alan Turing" -> "faculty:alan_turing".
         Lower case the entity name and replace spaces with underscores, prefixed by type.
         Query: {query}
         """
-        max_retries = 3
+        max_retries = 2
         for attempt in range(max_retries):
             try:
                 response = self.client.models.generate_content(
-                    model='gemini-1.5-flash',
+                    model=self.model_name,
                     contents=prompt,
                     config=types.GenerateContentConfig(
                         response_mime_type="application/json",
@@ -47,12 +53,16 @@ class OKFGraphAgent:
                 return result.anchor_ids
             except Exception as e:
                 if attempt < max_retries - 1:
-                    time.sleep(15)
+                    time.sleep(1)
                     continue
                 logger.error(f"Anchor extraction failed: {e}")
                 return []
+        return []
 
     def answer_query(self, query: str) -> Optional[AgentResponse]:
+        if not self.client or not settings.GEMINI_API_KEY:
+            return None
+
         # 1. Extract anchors
         anchors = self.extract_anchors(query)
         if not anchors:
@@ -81,7 +91,7 @@ class OKFGraphAgent:
         Query: {query}
         """
         
-        max_retries = 3
+        max_retries = 2
         for attempt in range(max_retries):
             try:
                 response = self.client.models.generate_content(
@@ -96,7 +106,7 @@ class OKFGraphAgent:
                 return AgentResponse.model_validate_json(response.text)
             except Exception as e:
                 if attempt < max_retries - 1:
-                    time.sleep(15)
+                    time.sleep(1)
                     continue
                 logger.error(f"Graph context synthesis failed: {e}")
                 return None
