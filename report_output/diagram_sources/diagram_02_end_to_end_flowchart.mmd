@@ -1,0 +1,31 @@
+flowchart TD
+    Start([User Submits Query via Portal UI]) --> AuthCheck{JWT Valid & Verified?}
+    AuthCheck -- No --> Ret401[Return HTTP 401 Unauthorized]
+    AuthCheck -- Yes --> Sanitize[Sanitize & Strip Prompt Injections]
+    Sanitize --> ExtractRole[Extract User Identity & Role: Student, Faculty, Admin]
+    ExtractRole --> RouteQuery{Query Intent Classification}
+    
+    RouteQuery -- Personal Academic/Attendance --> DirectDB[Query Normalized Relational Tables via StudentRepo]
+    RouteQuery -- Graph Relationship --> GraphAgent[Execute Recursive CTE on okf_nodes & okf_edges]
+    RouteQuery -- Institutional Policy --> VectorSearch[Query ChromaDB with Role-Audience Filter]
+    
+    DirectDB --> ExecEngines[Execute AttendanceRiskEngine & RecommendationEngine]
+    GraphAgent --> FormatGraph[Format Graph Entities & Context]
+    VectorSearch --> LexicalMatch[Compute TF-IDF Term Density Score]
+    
+    LexicalMatch --> HybridRerank[Deterministic Hybrid Rerank: 0.6 Vector + 0.4 Lexical]
+    HybridRerank --> EvalQuality{Evidence Quality Assessment}
+    
+    EvalQuality -- Insufficient (Score < 0.25) --> RefusalAns[Return Grounded Fallback: No Institutional Match]
+    EvalQuality -- High / Medium / Low --> PromptWrap[Wrap into Passive XML: untrusted_data Boundaries]
+    
+    FormatGraph --> PromptWrap
+    ExecEngines --> AssembleResponse[Assemble Deterministic Structured Analytics]
+    PromptWrap --> CallGemini[Invoke Google Gemini API with Strict System Rules]
+    CallGemini --> AttachCitations[Attach First-Class Source Citations: Doc, Section, Score]
+    
+    RefusalAns --> AuditLog[Write Audit Event to Database via AuditRepository]
+    AssembleResponse --> AuditLog
+    AttachCitations --> AuditLog
+    
+    AuditLog --> ReturnResult([Return JSON Response to Frontend with Correlation ID])

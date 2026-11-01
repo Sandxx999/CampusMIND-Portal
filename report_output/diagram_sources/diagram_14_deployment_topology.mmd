@@ -1,0 +1,38 @@
+flowchart TD
+    subgraph Client Tier
+        Browser["End-User Web Browser (Chrome, Safari, Firefox)"]
+        Mobile["Mobile Web Client"]
+    end
+
+    subgraph CDN & Edge Gateway
+        Edge["Cloudflare / Render CDN (SSL Termination, HTTPS 443)"]
+    end
+
+    subgraph Application Container (Render / Docker)
+        Gunicorn["Gunicorn Process Manager (Uvicorn Worker Class)"]
+        FastAPI["FastAPI ASGI Application Engine (Port 8000)"]
+        SSEConn["Persistent SSE Client Connections Pool"]
+        ThreadWorkers["ThreadPoolExecutor Daemon Background Workers"]
+    end
+
+    subgraph Data & Storage Services
+        NeonPostgres[("Neon Serverless Managed PostgreSQL (Pooled Connections)")]
+        LocalChroma[("Persistent ChromaDB Volume (/backend/chroma_db)")]
+        LocalSQLite[("Fallback SQLite Database (campusmind.db)")]
+    end
+
+    subgraph Third-Party AI Services
+        GoogleCloud["Google Cloud Vertex / Gemini API Services"]
+    end
+
+    Browser -->|HTTPS / WSS| Edge
+    Mobile -->|HTTPS / WSS| Edge
+    Edge -->|Reverse Proxy HTTP/1.1| Gunicorn
+    Gunicorn --> FastAPI
+    FastAPI --> SSEConn
+    FastAPI --> ThreadWorkers
+
+    FastAPI -->|psycopg2 Pooled Connection| NeonPostgres
+    FastAPI -->|Disk I/O| LocalChroma
+    FastAPI -->|Direct Disk Connection| LocalSQLite
+    FastAPI -->|REST HTTPS gRPC| GoogleCloud

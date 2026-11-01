@@ -1,0 +1,19 @@
+stateDiagram-v2
+    [*] --> QUEUED: Task Submitted via BackgroundTaskManager
+
+    state Background_Task_Execution {
+        QUEUED --> RUNNING: Worker Dequeues Task (Thread/Redis)
+        RUNNING --> COMPLETED: Execution Succeeds Cleanly
+        RUNNING --> FAILED: Exception Caught & Sanitized
+        FAILED --> QUEUED: Retry Invoked (allow_duplicate=True)
+    }
+
+    state Real_Time_SSE_Transport {
+        [*] --> Disconnected
+        Disconnected --> Connected: GET /api/v1/notifications/stream?token=JWT
+        Connected --> Emitting: Event Enqueued to asyncio.Queue
+        Emitting --> Connected: Chunk Streamed (event: notification)
+        Connected --> Ping: Timeout Window (1s in test / 15s in prod)
+        Ping --> Connected: Heartbeat Ping Yielded
+        Connected --> Disconnected: Client Closes Stream (finally: unsubscribe)
+    }

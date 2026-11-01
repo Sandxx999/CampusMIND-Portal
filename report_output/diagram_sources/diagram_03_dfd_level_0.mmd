@@ -1,0 +1,19 @@
+flowchart LR
+    Student((Student User))
+    Faculty((Faculty User))
+    Admin((Administrator))
+    Gemini[("Google Gemini LLM")]
+    
+    Subsystem[["CampusMIND 2.0 Enterprise Campus Intelligence System"]]
+    
+    Student -->|Credentials, Chat Queries, Analytics Requests| Subsystem
+    Subsystem -->|Personalized Dashboard, Risk Metrics, Grounded Answers| Student
+    
+    Faculty -->|Curriculum Updates, Section Inquiries, Analytics Requests| Subsystem
+    Subsystem -->|Course Rosters, Section Analytics, At-Risk Alerts| Faculty
+    
+    Admin -->|Document Ingestion, User Management, System Task Dispatch| Subsystem
+    Subsystem -->|Audit Logs, Task Telemetry, Institutional Overview| Admin
+    
+    Subsystem -->|Passive XML Context Grounded Prompts| Gemini
+    Gemini -->|Synthesized Answer Tokens| Subsystem

@@ -1,0 +1,47 @@
+flowchart TD
+    Student["🎓 Student Persona"]
+    Faculty["👨‍🏫 Faculty Persona"]
+    Admin["🛡️ Administrator Persona"]
+
+    subgraph CampusMIND 2.0 Use Cases
+        UC1(["Authenticate via JWT / Demo Login"])
+        UC2(["Query Institutional Policies via RAG"])
+        UC3(["View Personal Attendance & Recovery Formula"])
+        UC4(["Inspect Course Performance Radar & Grades"])
+        UC5(["Receive Rule-Based Academic Recommendations"])
+        UC6(["Explore Campus Knowledge Graph Nodes/Edges"])
+        UC7(["Stream Real-Time SSE Notifications"])
+        
+        UC8(["Review Section Attendance Rosters & Metrics"])
+        UC9(["Identify At-Risk Students & Interventions"])
+        UC10(["Evaluate Section Grade Distributions"])
+        
+        UC11(["Ingest & Re-index Campus Handbooks"])
+        UC12(["Manage User Roles & Profile Mappings"])
+        UC13(["Inspect System Tasks & Audit Telemetry"])
+        UC14(["Execute Database Migration to Cloud Postgres"])
+    end
+
+    Student --> UC1
+    Student --> UC2
+    Student --> UC3
+    Student --> UC4
+    Student --> UC5
+    Student --> UC6
+    Student --> UC7
+
+    Faculty --> UC1
+    Faculty --> UC2
+    Faculty --> UC6
+    Faculty --> UC7
+    Faculty --> UC8
+    Faculty --> UC9
+    Faculty --> UC10
+
+    Admin --> UC1
+    Admin --> UC2
+    Admin --> UC6
+    Admin --> UC11
+    Admin --> UC12
+    Admin --> UC13
+    Admin --> UC14

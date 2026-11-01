@@ -1,0 +1,41 @@
+erDiagram
+    ROLES ||--o{ USERS : assigns
+    USERS ||--o| STUDENT_PROFILES : has
+    USERS ||--o| FACULTY_PROFILES : has
+    USERS ||--o| ADMIN_PROFILES : has
+    USERS ||--o{ QUERY_LOGS : logs
+    USERS ||--o{ AUDIT_EVENTS : triggers
+
+    DEPARTMENTS ||--o{ PROGRAMS : offers
+    DEPARTMENTS ||--o{ COURSES : owns
+    DEPARTMENTS ||--o{ STUDENT_PROFILES : encompasses
+
+    PROGRAMS ||--o{ STUDENT_PROFILES : enrolls
+    COURSES ||--o{ ENROLLMENTS : takes
+    STUDENT_PROFILES ||--o{ ENROLLMENTS : registers
+
+    ENROLLMENTS ||--o{ ATTENDANCE_RECORDS : tracks
+    COURSES ||--o{ ASSESSMENTS : contains
+    ASSESSMENTS ||--o{ ASSESSMENT_GRADES : records
+    ENROLLMENTS ||--o{ ASSESSMENT_GRADES : achieves
+
+    OKF_NODES ||--o{ OKF_EDGES : source
+    OKF_NODES ||--o{ OKF_EDGES : target
+    
+    SYSTEM_TASKS {
+        string id PK
+        string task_type
+        string status
+        json payload
+        timestamp created_at
+    }
+
+    NOTIFICATION_ALERTS {
+        string id PK
+        string user_id FK
+        string category
+        string severity
+        string title
+        text message
+        boolean is_read
+    }

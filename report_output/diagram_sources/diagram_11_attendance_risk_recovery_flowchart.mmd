@@ -1,0 +1,25 @@
+flowchart TD
+    Start([Fetch Attendance Records for Course Offering]) --> CountConducted{Conducted Classes C > 0?}
+    CountConducted -- No --> CatUnknown[Category = UNKNOWN: Insufficient Conducted Sessions]
+    CountConducted -- Yes --> CalcPct[Compute Attendance Percentage: P = A / C * 100%]
+    
+    CalcPct --> CheckCrit{P < 60.0%?}
+    CheckCrit -- Yes --> SetCrit[Category = CRITICAL: Severe Eligibility Jeopardy]
+    CheckCrit -- No --> CheckRisk{P < 70.0%?}
+    CheckRisk -- Yes --> SetRisk[Category = AT_RISK: High Non-Compliance Risk]
+    CheckRisk -- No --> CheckWatch{P < 75.0%?}
+    CheckWatch -- Yes --> SetWatch[Category = WATCH: Deficit Borderline Warning]
+    CheckWatch -- No --> SetSafe[Category = SAFE: Meets Institutional Criteria]
+
+    SetCrit --> CalcDeficit[Calculate Attendance Deficit: max 0, 75.0% - P]
+    SetRisk --> CalcDeficit
+    SetWatch --> CalcDeficit
+    SetSafe --> ZeroRecovery[Consecutive Recovery Classes N = 0]
+
+    CalcDeficit --> Formula["Apply Recovery Formula: N = ceil( (0.75 * C - A) / (1.0 - 0.75) )"]
+    Formula --> EmitGuidance[Synthesize Actionable Recovery Plan: Attend next N sessions consecutively]
+    
+    ZeroRecovery --> AssembleResult[Assemble AttendanceRiskResult DTO]
+    EmitGuidance --> AssembleResult
+    CatUnknown --> AssembleResult
+    AssembleResult --> End([Deliver Analytics to Student / Faculty Dashboard])

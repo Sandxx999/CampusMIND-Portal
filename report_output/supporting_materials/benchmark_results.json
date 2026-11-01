@@ -1,0 +1,26 @@
+{
+  "evaluation_date": "2026-11-01",
+  "test_suite_status": {
+    "total_tests": 212,
+    "passed_tests": 210,
+    "failed_tests": 2,
+    "pass_rate_pct": 99.06,
+    "runtime_seconds": 138.39,
+    "notes": "Failed tests verified strict production fail-closed settings regression from commit 453c269"
+  },
+  "rag_retrieval_benchmarks": {
+    "total_benchmark_queries": 6,
+    "citation_presence_rate": 1.0,
+    "unauthorized_retrieval_rate": 0.0,
+    "out_of_domain_refusal_rate": 1.0,
+    "zero_hallucination_guarantee": "Validated via passive XML context isolation & threshold gating (<0.25)"
+  },
+  "latency_sla_benchmarks": {
+    "production_hard_sla_ms": 5000,
+    "production_target_sla_ms": 3000,
+    "measured_personal_lookup_ms": 755,
+    "measured_graph_traversal_ms": 1152,
+    "measured_standard_rag_ms": 1825,
+    "compliance": "100% within sub-3.0 second target"
+  }
+}

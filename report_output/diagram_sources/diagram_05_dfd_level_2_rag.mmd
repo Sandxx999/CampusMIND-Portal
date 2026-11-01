@@ -1,0 +1,28 @@
+flowchart TD
+    subgraph DFD Level 2: Hybrid RAG Ingestion and Retrieval Pipeline
+        RawDocs[Raw Campus Documents: .txt, .md] --> IngestProc["4.1 Ingestion & Checksum Engine"]
+        IngestProc --> HashCheck{SHA-256 Checksum Unchanged?}
+        HashCheck -- Yes --> SkipIngest["Skip Re-indexing (Idempotent)"]
+        HashCheck -- No --> ChunkProc["4.2 Institutional Chunker (500 chars, 80 overlap)"]
+        ChunkProc --> EmbedProc["4.3 Embedding Provider Layer (MiniLM-L6-v2)"]
+        EmbedProc --> ChromaUpsert["4.4 Vector Store Upsert"]
+        ChromaUpsert --> ChromaDB[("ChromaDB Vector Store")]
+
+        UserQuery[User Question] --> QSanitize["4.5 Query Sanitization & Role Auditing"]
+        QSanitize --> FilterGen["4.6 Server-Side Audience Filter ($or: all, role)"]
+        FilterGen --> VectorQuery["4.7 Candidate Vector Retrieval (Top 3*K)"]
+        ChromaDB --> VectorQuery
+
+        VectorQuery --> LexicalScore["4.8 TF-IDF Term Density Matcher"]
+        LexicalScore --> RerankAlg["4.9 Deterministic Hybrid Reranker (0.6 Vec + 0.4 Lex)"]
+        RerankAlg --> QualityCheck["4.10 Evidence Quality Evaluator"]
+
+        QualityCheck --> ThresholdSplit{Quality >= 0.25?}
+        ThresholdSplit -- No --> FallbackGen["4.11 Immediate Standard Grounded Refusal"]
+        ThresholdSplit -- Yes --> ContextFormat["4.12 Passive XML Context Formatter"]
+        ContextFormat --> LLMSynth["4.13 LLM Grounded Synthesis (Gemini Flash Lite)"]
+        LLMSynth --> CitationBuilder["4.14 Source Citation & Excerpt Builder"]
+
+        FallbackGen --> FinalDelivery[JSON RAG Payload to User]
+        CitationBuilder --> FinalDelivery
+    end

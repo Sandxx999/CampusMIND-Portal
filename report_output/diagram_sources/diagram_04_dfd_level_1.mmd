@@ -1,0 +1,45 @@
+flowchart TD
+    subgraph External Entities
+        User((Authenticated Campus User))
+        LLM[("Google Gemini API")]
+    end
+
+    subgraph Processes
+        P1["1.0 Authentication & Access Control"]
+        P2["2.0 Query Sanitization & Intent Routing"]
+        P3["3.0 Academic Analytics & Risk Processing"]
+        P4["4.0 Hybrid RAG & Knowledge Retrieval"]
+        P5["5.0 Graph Relationship Traversal"]
+        P6["6.0 Audit Logging & Observability"]
+    end
+
+    subgraph Data Stores
+        D1[("D1: User & Security Tables (users, roles)")]
+        D2[("D2: Academic Data Store (students, attendance, grades)")]
+        D3[("D3: ChromaDB Vector Knowledge Store")]
+        D4[("D4: Knowledge Graph Store (okf_nodes, okf_edges)")]
+        D5[("D5: Observability Store (query_logs, audit_events)")]
+    end
+
+    User -->|Login Credentials| P1
+    P1 <-->|Verify Hashes & Roles| D1
+    P1 -->|JWT Claims Context| P2
+
+    User -->|Chat / Analytics Query| P2
+    P2 -->|Personal Query Intent| P3
+    P2 -->|Policy Query Intent| P4
+    P2 -->|Relational Network Intent| P5
+
+    P3 <-->|Fetch Normalized Records| D2
+    P4 <-->|Retrieve Chunks by Audience| D3
+    P5 <-->|Traverse Relations| D4
+
+    P4 -->|Grounded Context XML| LLM
+    LLM -->|Synthesized Response| P4
+
+    P3 -->|Calculated Metrics| P6
+    P4 -->|Verified Answer & Citations| P6
+    P5 -->|Graph Payloads| P6
+
+    P6 -->|Write Execution Telemetry| D5
+    P6 -->|Unified Output Response| User

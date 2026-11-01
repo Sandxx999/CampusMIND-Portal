@@ -1,0 +1,48 @@
+{
+  "project_name": "CampusMIND 2.0 (Campus AI Assistant)",
+  "repository_type": "Modular Monolith Higher-Education Intelligence Platform",
+  "total_source_files": 211,
+  "total_lines_of_code": 33566,
+  "languages": {
+    "Python": {
+      "files": 146,
+      "lines": 19268,
+      "role": "FastAPI Gateway, Services, RAG Engine, OKF Graph, Analytics"
+    },
+    "JSON": {
+      "files": 7,
+      "lines": 6993,
+      "role": "Canonical Seed Data, Q&A Evaluation Benchmarks, Configuration"
+    },
+    "React_JSX": {
+      "files": 21,
+      "lines": 4658,
+      "role": "Vite SPA, Dashboards, Glassmorphic UI, Recharts, Cytoscape.js"
+    },
+    "Markdown": {
+      "files": 24,
+      "lines": 1564,
+      "role": "Architectural Documentation, Handbooks, Specifications"
+    },
+    "JavaScript": {
+      "files": 4,
+      "lines": 596,
+      "role": "API Client Library, Build Scripts, Vite Config"
+    },
+    "YAML": {
+      "files": 3,
+      "lines": 170,
+      "role": "Docker Compose, Render Blueprints, CI Workflows"
+    },
+    "CSS": {
+      "files": 1,
+      "lines": 168,
+      "role": "Tailwind Glassmorphic Gradients and Ambient Lighting"
+    },
+    "Dockerfile": {
+      "files": 3,
+      "lines": 119,
+      "role": "Production Multi-Stage Container Packaging"
+    }
+  }
+}

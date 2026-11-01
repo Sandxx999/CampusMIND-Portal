@@ -1,0 +1,2444 @@
+{
+  "query_logs": {
+    "columns_count": 12,
+    "record_count": 41,
+    "columns": [
+      {
+        "name": "id",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": true
+      },
+      {
+        "name": "timestamp",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "username",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "role",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "question",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "answer",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "latency_ms",
+        "type": "REAL",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "chunk_count",
+        "type": "INTEGER",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "confidence",
+        "type": "REAL",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "is_fallback",
+        "type": "INTEGER",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "user_id",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      }
+    ]
+  },
+  "query_feedback": {
+    "columns_count": 4,
+    "record_count": 5,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": false,
+        "pk": true
+      },
+      {
+        "name": "query_id",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "is_positive",
+        "type": "INTEGER",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "timestamp",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      }
+    ]
+  },
+  "students": {
+    "columns_count": 13,
+    "record_count": 108,
+    "columns": [
+      {
+        "name": "enrollment_no",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": true
+      },
+      {
+        "name": "name",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "email",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "mobile_no",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "branch",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "year",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "semester",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "courses_enrolled",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "sgpa",
+        "type": "REAL",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "cgpa",
+        "type": "REAL",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "attendance_pct",
+        "type": "REAL",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "backlogs",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "fee_status",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "roles": {
+    "columns_count": 4,
+    "record_count": 3,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "description",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "departments": {
+    "columns_count": 4,
+    "record_count": 8,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "code",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "users": {
+    "columns_count": 10,
+    "record_count": 102,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "username",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "email",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "display_name",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "password_hash",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "role_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "last_login_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "programs": {
+    "columns_count": 6,
+    "record_count": 8,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "code",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "department_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "duration_years",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "courses": {
+    "columns_count": 6,
+    "record_count": 43,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "code",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(150)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "department_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "credits",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "student_profiles": {
+    "columns_count": 17,
+    "record_count": 100,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "user_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "enrollment_no",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "department_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "program_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "branch",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "year",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "semester",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "courses_enrolled",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "sgpa",
+        "type": "FLOAT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "cgpa",
+        "type": "FLOAT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "attendance_pct",
+        "type": "FLOAT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "backlogs",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "fee_status",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "mobile_no",
+        "type": "VARCHAR(30)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "faculty_profiles": {
+    "columns_count": 7,
+    "record_count": 1,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "user_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "employee_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "department_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "designation",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "admin_profiles": {
+    "columns_count": 6,
+    "record_count": 1,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "user_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "employee_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "designation",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "audit_events": {
+    "columns_count": 7,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "event_type",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "user_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "actor_username",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "ip_address",
+        "type": "VARCHAR(45)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "details",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "timestamp",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "enrollments": {
+    "columns_count": 7,
+    "record_count": 500,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_profile_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "academic_year",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "semester",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "grade",
+        "type": "VARCHAR(5)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "academic_terms": {
+    "columns_count": 9,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "code",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "academic_year",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "semester",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "start_date",
+        "type": "DATETIME",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "end_date",
+        "type": "DATETIME",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "is_current",
+        "type": "BOOLEAN",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "announcements": {
+    "columns_count": 14,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(200)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "content",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "author_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "audience",
+        "type": "VARCHAR(30)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "department_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "program_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "priority",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "publish_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "expires_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "campus_events": {
+    "columns_count": 15,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(200)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "description",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "location",
+        "type": "VARCHAR(150)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "start_time",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "end_time",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "organizer_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "audience",
+        "type": "VARCHAR(30)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "department_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "category",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "capacity",
+        "type": "INTEGER",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "requires_registration",
+        "type": "BOOLEAN",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "knowledge_documents": {
+    "columns_count": 15,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(200)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "file_path",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "category",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "department_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "audience",
+        "type": "VARCHAR(30)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "version",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "effective_date",
+        "type": "DATETIME",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "expiry_date",
+        "type": "DATETIME",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "is_active",
+        "type": "BOOLEAN",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "checksum",
+        "type": "VARCHAR(64)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "chunk_count",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "uploader_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "course_offerings": {
+    "columns_count": 10,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "term_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "faculty_profile_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "section",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "room",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "schedule",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "max_capacity",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "event_registrations": {
+    "columns_count": 5,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "event_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "user_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "registered_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "attendance_records": {
+    "columns_count": 10,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_profile_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "course_offering_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "date",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "recorded_by_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "remarks",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "assessments": {
+    "columns_count": 12,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(150)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "assessment_type",
+        "type": "VARCHAR(30)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "max_marks",
+        "type": "FLOAT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "weightage",
+        "type": "FLOAT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "assessment_date",
+        "type": "DATETIME",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "course_offering_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "created_by_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "assessment_grades": {
+    "columns_count": 9,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "assessment_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "student_profile_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "obtained_marks",
+        "type": "FLOAT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "grade",
+        "type": "VARCHAR(5)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "feedback",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "evaluator_id",
+        "type": "VARCHAR(36)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "sso_provider_configs": {
+    "columns_count": 8,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "provider_name",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "issuer_url",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "client_id",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "is_active",
+        "type": "BOOLEAN",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "allow_jit_provisioning",
+        "type": "BOOLEAN",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "system_tasks": {
+    "columns_count": 8,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "task_type",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "progress_pct",
+        "type": "FLOAT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "details",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "initiated_by",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "academic_interventions": {
+    "columns_count": 11,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_profile_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "issued_by_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "risk_category",
+        "type": "VARCHAR(30)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(150)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "description",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "recommended_action",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "resolution_notes",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "student_action_plans": {
+    "columns_count": 9,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_profile_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(150)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "target_attendance_pct",
+        "type": "FLOAT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "target_sgpa",
+        "type": "FLOAT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "milestones",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "updated_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "notification_alerts": {
+    "columns_count": 9,
+    "record_count": 0,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "user_id",
+        "type": "VARCHAR(36)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "category",
+        "type": "VARCHAR(40)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "severity",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(150)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "message",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "is_read",
+        "type": "BOOLEAN",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "link",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "okf_nodes": {
+    "columns_count": 5,
+    "record_count": 10,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "label",
+        "type": "VARCHAR",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "properties",
+        "type": "JSON",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "okf_edges": {
+    "columns_count": 6,
+    "record_count": 10,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "source_id",
+        "type": "VARCHAR",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "target_id",
+        "type": "VARCHAR",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "relation",
+        "type": "VARCHAR",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "properties",
+        "type": "JSON",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "portal_user_accounts": {
+    "columns_count": 8,
+    "record_count": 12,
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "role",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "email",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "password_hash",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "full_name",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "profile_photo_url",
+        "type": "VARCHAR(500)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "department",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "created_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "pk": false
+      }
+    ]
+  },
+  "portal_student_profiles": {
+    "columns_count": 11,
+    "record_count": 4,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "roll_number",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "program",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "current_semester",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "batch_year",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "overall_attendance_pct",
+        "type": "FLOAT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "bio",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "location",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "academic_status",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "links",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      }
+    ]
+  },
+  "portal_exam_results": {
+    "columns_count": 9,
+    "record_count": 16,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "exam_type",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "course_code",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "course_name",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "marks_obtained",
+        "type": "FLOAT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "max_marks",
+        "type": "FLOAT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "grade",
+        "type": "VARCHAR(10)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "portal_schedule_slots": {
+    "columns_count": 9,
+    "record_count": 5,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "day_of_week",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "start_time",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "end_time",
+        "type": "VARCHAR(20)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "course_code",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "course_name",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "venue",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "faculty_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "target_program",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "portal_subject_resources": {
+    "columns_count": 7,
+    "record_count": 2,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "course_code",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "faculty_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "resource_type",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "file_url",
+        "type": "VARCHAR(500)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "uploaded_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "pk": false
+      }
+    ]
+  },
+  "portal_notice_board": {
+    "columns_count": 6,
+    "record_count": 2,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "description",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "target_audience",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "posted_by",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "posted_at",
+        "type": "DATETIME",
+        "notnull": false,
+        "pk": false
+      }
+    ]
+  },
+  "portal_student_skills": {
+    "columns_count": 6,
+    "record_count": 32,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "category",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "proficiency_pct",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "verified",
+        "type": "BOOLEAN",
+        "notnull": false,
+        "pk": false
+      }
+    ]
+  },
+  "portal_student_projects": {
+    "columns_count": 10,
+    "record_count": 12,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "category",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "description",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "role",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "technologies",
+        "type": "TEXT",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "github_url",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "live_demo_url",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "pk": false
+      }
+    ]
+  },
+  "portal_student_certifications": {
+    "columns_count": 8,
+    "record_count": 12,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "issuer",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "issue_date",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "credential_id",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "credential_url",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "skills",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      }
+    ]
+  },
+  "portal_student_experiences": {
+    "columns_count": 9,
+    "record_count": 4,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "organization",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "role",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "experience_type",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "start_date",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "end_date",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "responsibilities",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "technologies",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      }
+    ]
+  },
+  "portal_student_achievements": {
+    "columns_count": 6,
+    "record_count": 8,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "category",
+        "type": "VARCHAR(100)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "date",
+        "type": "VARCHAR(50)",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "organization",
+        "type": "VARCHAR(255)",
+        "notnull": false,
+        "pk": false
+      }
+    ]
+  },
+  "portal_student_activities": {
+    "columns_count": 5,
+    "record_count": 4,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "organization",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "role",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "description",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      }
+    ]
+  },
+  "portal_student_career_profiles": {
+    "columns_count": 6,
+    "record_count": 4,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "target_role",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "target_industry",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "career_interests",
+        "type": "TEXT",
+        "notnull": false,
+        "pk": false
+      },
+      {
+        "name": "career_readiness_pct",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  },
+  "portal_upcoming_tasks": {
+    "columns_count": 6,
+    "record_count": 12,
+    "columns": [
+      {
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": true,
+        "pk": true
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(255)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "course",
+        "type": "VARCHAR(100)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "due_date",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      },
+      {
+        "name": "priority",
+        "type": "VARCHAR(50)",
+        "notnull": true,
+        "pk": false
+      }
+    ]
+  }
+}

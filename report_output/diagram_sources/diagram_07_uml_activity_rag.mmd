@@ -1,0 +1,30 @@
+flowchart TD
+    Start([User Submits Prompt]) --> AuthValidate{Verify JWT Token}
+    AuthValidate -- Invalid --> ReturnAuthError[Emit 401 Unauthorized Response]
+    AuthValidate -- Valid --> IntentFilter{Classify Query Intent}
+
+    IntentFilter -- Student Personal Data --> CheckStudentProfile[Locate StudentProfile by JWT enrollment_no]
+    CheckStudentProfile --> ExecRiskCalc[Calculate Deficit & Consecutive Recovery Classes N]
+    ExecRiskCalc --> BuildPersonalResponse[Generate Structured Academic Payload]
+
+    IntentFilter -- Institutional Policy --> GenAudience[Derive Audience Scope: student, faculty, admin]
+    GenAudience --> VectorSearch[ChromaDB Nearest Neighbor Cosine Search]
+    VectorSearch --> CheckStudentDirDoc{Contains Private Student Records?}
+    CheckStudentDirDoc -- Yes --> StripDoc[Security Guardrail: Evict Document from Context]
+    CheckStudentDirDoc -- No --> LexicalScoring[Calculate Term Match Frequency & Density]
+    StripDoc --> LexicalScoring
+    
+    LexicalScoring --> ComputeComposite[Compute Composite Rerank Score = 0.6*V + 0.4*L + Bonus]
+    ComputeComposite --> AssessEvidence{Max Score >= 0.25 Threshold?}
+    
+    AssessEvidence -- No --> TriggerRefusal[Return Zero-Hallucination Fallback String]
+    AssessEvidence -- Yes --> DetermineBand[Assign Quality Band: HIGH, MEDIUM, LOW]
+    DetermineBand --> FrameContext[Wrap Snippets inside untrusted_data XML Tag]
+    FrameContext --> LLMCall[Invoke Gemini Flash Lite with Temperature=0.2]
+    LLMCall --> CompileCitations[Format Document Metadata, Chunk Index & Snippet]
+
+    BuildPersonalResponse --> LogAudit[Log Action to AuditRepository]
+    TriggerRefusal --> LogAudit
+    CompileCitations --> LogAudit
+
+    LogAudit --> Finish([Send Response to Client])

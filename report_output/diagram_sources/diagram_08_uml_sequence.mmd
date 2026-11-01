@@ -1,0 +1,37 @@
+sequenceDiagram
+    autonumber
+    actor Client as Browser (React 18)
+    participant Gateway as FastAPI Router
+    participant Middleware as Correlation & Security Middleware
+    participant Auth as AuthService & RBAC
+    participant ChatSvc as ChatService & QueryRouter
+    participant Chroma as ChromaDB Vector Store
+    participant Rerank as Hybrid Reranker
+    participant Gemini as Google Gemini 1.5/Flash Lite
+    participant Audit as AuditRepository
+    participant DB as Relational Database (SQLAlchemy)
+
+    Client->>Gateway: POST /api/v1/chat (Authorization: Bearer <JWT>)
+    Gateway->>Middleware: Intercept & Attach X-Request-ID
+    Middleware->>Auth: Validate JWT & Extract Claims (user_id, role)
+    Auth-->>Gateway: Principal Validated (Student STU_2024_015)
+    Gateway->>ChatSvc: process_chat_query(request, user)
+    
+    ChatSvc->>ChatSvc: Classify Intent (Institutional RAG Query)
+    ChatSvc->>Chroma: query(query_text, n_results=15)
+    Chroma-->>ChatSvc: Candidate Chunks & Embeddings
+    
+    ChatSvc->>Rerank: rerank(query, candidates, top_k=5)
+    Rerank->>Rerank: Compute Lexical Match & Composite Score
+    Rerank-->>ChatSvc: Ranked Candidates & Quality Signal (HIGH)
+    
+    ChatSvc->>Gemini: generate_content(SystemRules, GroundedContextXML, Query)
+    Gemini-->>ChatSvc: Synthesized Response Text
+    
+    ChatSvc->>Audit: log_query_event(user_id, latency, confidence, sources)
+    Audit->>DB: INSERT INTO query_logs & audit_events
+    DB-->>Audit: Acknowledged
+    
+    ChatSvc-->>Gateway: ChatResponse (answer, sources, evidence_quality)
+    Gateway->>Middleware: Mask PII / Secrets in Telemetry
+    Middleware-->>Client: HTTP 200 OK (X-Request-ID, JSON Payload)

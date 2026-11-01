@@ -1,0 +1,30 @@
+flowchart TD
+    Start([Receive Candidate Document Chunks]) --> ExtractScores[Extract Vector Similarity Score: S_vec]
+    ExtractScores --> Tokenize[Tokenize & Clean Query and Chunk Snippet Text]
+    Tokenize --> FilterStops[Filter Standard Low-Value Stop Words]
+    
+    FilterStops --> MatchTerms[Compute Query Term Matches in Snippet & Title]
+    MatchTerms --> CoverageRatio[Calculate Term Coverage Ratio: C = matched / total_query_terms]
+    MatchTerms --> TermFreq[Count Total Frequency of Matched Terms]
+    TermFreq --> DensityScore["Compute Term Density: D = min(1.0, ln(1 + freq) / 3.0)"]
+    
+    CoverageRatio --> LexicalFormula["Compute Lexical Match Score: S_lex = round(0.7 * C + 0.3 * D, 3)"]
+    DensityScore --> LexicalFormula
+    
+    LexicalFormula --> CompositeFormula["Calculate Composite Score: S_comp = (0.6 * S_vec) + (0.4 * S_lex) + TitleBonus"]
+    CompositeFormula --> Deduplicate[Deduplicate Overlapping Chunks from Identical Section]
+    Deduplicate --> SortCandidates[Sort Candidates Descending by S_comp]
+    SortCandidates --> SelectTopK[Select Top K Chunks, default=5]
+    
+    SelectTopK --> EvaluateMax{Max Score S_max >= 0.65?}
+    EvaluateMax -- Yes --> HighQual[Evidence Quality = HIGH]
+    EvaluateMax -- No --> EvalMed{Max Score S_max >= 0.45?}
+    EvalMed -- Yes --> MedQual[Evidence Quality = MEDIUM]
+    EvalMed -- No --> EvalLow{Max Score S_max >= 0.25?}
+    EvalLow -- Yes --> LowQual[Evidence Quality = LOW]
+    EvalLow -- No --> InsuffQual[Evidence Quality = INSUFFICIENT]
+
+    HighQual --> OutputEvidence([Return Top Evidence & Quality Indicator])
+    MedQual --> OutputEvidence
+    LowQual --> OutputEvidence
+    InsuffQual --> OutputEvidence

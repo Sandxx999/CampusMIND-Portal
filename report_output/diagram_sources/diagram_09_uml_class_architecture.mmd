@@ -1,0 +1,70 @@
+classDiagram
+    class User {
+        +String id
+        +String username
+        +String email
+        +String password_hash
+        +String status
+        +String role_id
+        +DateTime created_at
+    }
+
+    class StudentProfile {
+        +String id
+        +String user_id
+        +String enrollment_no
+        +String department_id
+        +String branch
+        +Integer semester
+        +Float cgpa
+        +Float attendance_pct
+        +Integer backlogs
+    }
+
+    class AttendanceRecord {
+        +String id
+        +String enrollment_id
+        +Date date
+        +String status
+        +String remarks
+    }
+
+    class AssessmentGrade {
+        +String id
+        +String assessment_id
+        +String enrollment_id
+        +Float marks_obtained
+        +Float max_marks
+        +String letter_grade
+    }
+
+    class HybridCampusRetriever {
+        -VectorStore vector_store
+        -DeterministicHybridReranker reranker
+        +retrieve_hybrid_evidence(query, user_role, top_k)
+        +_build_role_audience_filter(user_role)
+    }
+
+    class AttendanceRiskEngine {
+        +DEFAULT_REQUIRED_PCT: Float = 75.0
+        +compute_student_attendance_summary(records)
+        +compute_recovery_classes(attended, conducted, target)
+        +classify_risk_category(current_pct)
+    }
+
+    class RecommendationEngine {
+        +generate_recommendations(profile, attendance, performance)
+    }
+
+    class ChatService {
+        -HybridCampusRetriever retriever
+        -AuditRepository audit_repo
+        +process_chat_query(request, user)
+    }
+
+    User "1" -- "1" StudentProfile : has profile
+    StudentProfile "1" -- "*" AttendanceRecord : logs
+    StudentProfile "1" -- "*" AssessmentGrade : receives
+    ChatService --> HybridCampusRetriever : coordinates
+    ChatService --> AttendanceRiskEngine : consults
+    ChatService --> RecommendationEngine : generates

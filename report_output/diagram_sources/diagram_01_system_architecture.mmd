@@ -1,0 +1,64 @@
+graph TD
+    subgraph Presentation Layer
+        UI["React 18 / Vite SPA (Tailwind CSS, Glassmorphic UI, Cytoscape.js, Recharts)"]
+    end
+
+    subgraph API & Gateway Layer
+        Router["FastAPI Gateway (/api/v1/* & /health/*)"]
+        Correlation["RequestCorrelationMiddleware (X-Request-ID, Latency Logging)"]
+        MaskFilter["SecretMaskingFilter (Regex PII & Credential Sanitizer)"]
+        AuthHandler["JWT Bearer & Server-Side RBAC Authenticator"]
+    end
+
+    subgraph Domain Service Layer
+        ChatSvc["ChatService (Hybrid RAG Coordinator)"]
+        AnalyticsSvc["AnalyticsService (Deterministic Academic Engines)"]
+        StudentSvc["StudentService & AcademicService"]
+        OKFAgent["OKF GraphAgent (Knowledge Graph Traversal)"]
+        TaskMgr["BackgroundTaskManager (Threaded/Redis Worker)"]
+        SSEHub["NotificationTransportManager (Real-Time SSE Hub)"]
+    end
+
+    subgraph Analytics & Algorithmic Engines
+        RiskEngine["AttendanceRiskEngine (Deficit & Recovery Calculus)"]
+        RecEngine["RecommendationEngine (Explainable Guidance)"]
+        Reranker["DeterministicHybridReranker (0.6 Vector + 0.4 Lexical)"]
+        QueryRouter["AcademicQueryRouter (Intent Classifier)"]
+    end
+
+    subgraph Persistence & Storage Layer
+        SQLAlchemy["SQLAlchemy 2.x ORM & Alembic Versioning"]
+        SQLiteDB[("SQLite Canonical Database (Dev/Test)")]
+        PostgresDB[("PostgreSQL / Neon Cloud DB (Production)")]
+        ChromaStore[("ChromaDB Vector Store (Campus Handbooks)")]
+    end
+
+    subgraph External Systems
+        GeminiLLM["Google Gemini API (Flash Lite / 1.5 Flash Models)"]
+    end
+
+    UI -->|HTTPS / JWT Token| Router
+    Router --> Correlation
+    Correlation --> MaskFilter
+    MaskFilter --> AuthHandler
+    AuthHandler --> ChatSvc
+    AuthHandler --> AnalyticsSvc
+    AuthHandler --> StudentSvc
+    AuthHandler --> OKFAgent
+
+    ChatSvc --> QueryRouter
+    ChatSvc --> Reranker
+    ChatSvc --> ChromaStore
+    ChatSvc --> GeminiLLM
+
+    AnalyticsSvc --> RiskEngine
+    AnalyticsSvc --> RecEngine
+    AnalyticsSvc --> SQLAlchemy
+
+    OKFAgent --> SQLAlchemy
+    StudentSvc --> SQLAlchemy
+    TaskMgr --> SQLAlchemy
+    SSEHub --> UI
+
+    SQLAlchemy --> SQLiteDB
+    SQLAlchemy --> PostgresDB
