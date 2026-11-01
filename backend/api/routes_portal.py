@@ -260,20 +260,36 @@ def portal_chat(req: ChatRequest, current_user: dict = Depends(get_current_user)
 
 @router.get("/student/me/dashboard", dependencies=[Depends(require_role(["student"]))])
 def get_student_dashboard(current_user: dict = Depends(get_current_user)):
-    student_id = current_user.get("id") or current_user.get("sub")
+    raw_id = str(current_user.get("id") or current_user.get("sub") or "").strip()
+    
+    id_alias_map = {
+        "sandeep": "STU_2024_015",
+        "stu_2024_015": "STU_2024_015",
+        "sindhu": "STU_2024_016",
+        "sindhu.viplav": "STU_2024_016",
+        "stu_2024_016": "STU_2024_016",
+        "vaishnavi": "STU_2024_017",
+        "stu_2024_017": "STU_2024_017",
+        "satyajit": "STU_2024_018",
+        "stu_2024_018": "STU_2024_018",
+    }
+    canonical_id = id_alias_map.get(raw_id.lower(), raw_id.upper())
+    student_id = canonical_id
+    id_variations = list({canonical_id, canonical_id.upper(), canonical_id.lower(), raw_id, raw_id.upper(), raw_id.lower()})
+
     with get_db_session() as db:
-        user = db.query(UserAccount).filter(UserAccount.id == student_id).first()
-        profile = db.query(StudentAcademicProfile).filter(StudentAcademicProfile.student_id == student_id).first()
+        user = db.query(UserAccount).filter(UserAccount.id.in_(id_variations)).first()
+        profile = db.query(StudentAcademicProfile).filter(StudentAcademicProfile.student_id.in_(id_variations)).first()
         
-        skills = db.query(StudentSkill).filter(StudentSkill.student_id == student_id).all()
-        projects = db.query(StudentProject).filter(StudentProject.student_id == student_id).all()
-        certifications = db.query(StudentCertification).filter(StudentCertification.student_id == student_id).all()
-        experiences = db.query(StudentExperience).filter(StudentExperience.student_id == student_id).all()
-        achievements = db.query(StudentAchievement).filter(StudentAchievement.student_id == student_id).all()
-        activities = db.query(StudentActivity).filter(StudentActivity.student_id == student_id).all()
-        career = db.query(StudentCareerProfile).filter(StudentCareerProfile.student_id == student_id).first()
-        tasks = db.query(UpcomingTask).filter(UpcomingTask.student_id == student_id).all()
-        exams = db.query(ExamResult).filter(ExamResult.student_id == student_id).all()
+        skills = db.query(StudentSkill).filter(StudentSkill.student_id.in_(id_variations)).all()
+        projects = db.query(StudentProject).filter(StudentProject.student_id.in_(id_variations)).all()
+        certifications = db.query(StudentCertification).filter(StudentCertification.student_id.in_(id_variations)).all()
+        experiences = db.query(StudentExperience).filter(StudentExperience.student_id.in_(id_variations)).all()
+        achievements = db.query(StudentAchievement).filter(StudentAchievement.student_id.in_(id_variations)).all()
+        activities = db.query(StudentActivity).filter(StudentActivity.student_id.in_(id_variations)).all()
+        career = db.query(StudentCareerProfile).filter(StudentCareerProfile.student_id.in_(id_variations)).first()
+        tasks = db.query(UpcomingTask).filter(UpcomingTask.student_id.in_(id_variations)).all()
+        exams = db.query(ExamResult).filter(ExamResult.student_id.in_(id_variations)).all()
 
         radar_items = []
         if exams:
@@ -313,22 +329,92 @@ def get_student_dashboard(current_user: dict = Depends(get_current_user)):
             {"course": "CS304", "pct": 78}
         ])
 
+        fallback_profile_map = {
+            "STU_2024_015": {
+                "full_name": "Gadde Sandeep",
+                "roll_number": "24AI015",
+                "program": "B.Tech Artificial Intelligence",
+                "batch_year": "2024-2028",
+                "current_semester": 5,
+                "overall_attendance_pct": 88.5,
+                "bio": "AI engineering student interested in machine learning, generative AI, intelligent systems, and software engineering.",
+                "location": "Hyderabad",
+                "academic_status": "Active",
+                "links": {"github": "https://github.com", "linkedin": "https://linkedin.com", "portfolio": "https://portfolio.com"}
+            },
+            "STU_2024_016": {
+                "full_name": "Sindhu Viplav",
+                "roll_number": "24AI016",
+                "program": "B.Tech Artificial Intelligence",
+                "batch_year": "2024-2028",
+                "current_semester": 5,
+                "overall_attendance_pct": 93.5,
+                "bio": "AI student researcher specializing in Natural Language Processing, Large Language Models, and Multimodal Intelligence systems.",
+                "location": "Hyderabad",
+                "academic_status": "Active",
+                "links": {"github": "https://github.com/sindhu-viplav", "linkedin": "https://linkedin.com/in/sindhu-viplav", "portfolio": "https://sindhuviplav.dev"}
+            },
+            "STU_2024_017": {
+                "full_name": "Vaishnavi",
+                "roll_number": "24AI017",
+                "program": "B.Tech Artificial Intelligence",
+                "batch_year": "2024-2028",
+                "current_semester": 5,
+                "overall_attendance_pct": 91.0,
+                "bio": "Aspiring AI engineer enthusiastic about Computer Vision, Edge AI, Autonomous Systems, and embedded neural networks.",
+                "location": "Hyderabad",
+                "academic_status": "Active",
+                "links": {"github": "https://github.com/vaishnavi-ai", "linkedin": "https://linkedin.com/in/vaishnavi-ai", "portfolio": "https://vaishnavi.dev"}
+            },
+            "STU_2024_018": {
+                "full_name": "Satyajit",
+                "roll_number": "24AI018",
+                "program": "B.Tech Artificial Intelligence",
+                "batch_year": "2024-2028",
+                "current_semester": 5,
+                "overall_attendance_pct": 87.5,
+                "bio": "Data science practitioner and AI full-stack developer dedicated to Big Data Analytics, Predictive Modeling, and Distributed ML systems.",
+                "location": "Hyderabad",
+                "academic_status": "Active",
+                "links": {"github": "https://github.com/satyajit-ds", "linkedin": "https://linkedin.com/in/satyajit-ds", "portfolio": "https://satyajit.dev"}
+            }
+        }
+        fb = fallback_profile_map.get(canonical_id, fallback_profile_map["STU_2024_015"])
+
+        parsed_links = None
+        if profile and profile.links:
+            try:
+                parsed_links = json.loads(profile.links) if isinstance(profile.links, str) else profile.links
+            except Exception:
+                parsed_links = fb["links"]
+        else:
+            parsed_links = fb["links"]
+
+        final_full_name = (user.full_name if user and user.full_name else None) or current_user.get("name") or fb["full_name"]
+        final_roll_number = (profile.roll_number if profile and profile.roll_number else None) or fb["roll_number"]
+        final_program = (profile.program if profile and profile.program else None) or fb["program"]
+        final_batch_year = (profile.batch_year if profile and profile.batch_year else None) or fb["batch_year"]
+        final_current_semester = (profile.current_semester if profile and profile.current_semester else None) or fb["current_semester"]
+        final_bio = (profile.bio if profile and profile.bio else None) or fb["bio"]
+        final_location = (profile.location if profile and profile.location else None) or fb["location"]
+        final_academic_status = (profile.academic_status if profile and profile.academic_status else None) or fb["academic_status"]
+
         return {
             "profile": {
-                "id": user.id if user else student_id,
-                "full_name": user.full_name if user else (current_user.get("name") or "Student"),
+                "id": canonical_id,
+                "full_name": final_full_name,
                 "email": user.email if user else current_user.get("email"),
                 "department": user.department if user else "Artificial Intelligence",
-                "profile_photo_url": user.profile_photo_url if user else f"https://ui-avatars.com/api/?name={student_id}",
-                "roll_number": profile.roll_number if profile else None,
-                "program": profile.program if profile else None,
-                "batch_year": profile.batch_year if profile else None,
-                "current_semester": profile.current_semester if profile else None,
+                "profile_photo_url": user.profile_photo_url if user else f"https://ui-avatars.com/api/?name={canonical_id}",
+                "roll_number": final_roll_number,
+                "program": final_program,
+                "batch_year": final_batch_year,
+                "current_semester": final_current_semester,
                 "overall_attendance_pct": att_pct,
-                "bio": profile.bio if profile else None,
-                "location": profile.location if profile else None,
-                "academic_status": profile.academic_status if profile else None,
-                "links": json.loads(profile.links) if profile and profile.links else None
+                "bio": final_bio,
+                "location": final_location,
+                "academic_status": final_academic_status,
+                "links": parsed_links
             },
             "academic_metrics": {
                 "cgpa": custom_metric["cgpa"],

@@ -181,9 +181,21 @@ def login(payload: LoginRequest):
             allowed_demo_passwords = {settings.DEMO_PASSWORD, "password123", f"{demo_key}123"}
             if payload.password in allowed_demo_passwords:
                 demo_data = DEMO_USERS[demo_key]
+                canonical_id_map = {
+                    "stu_2024_015": "STU_2024_015",
+                    "sandeep": "STU_2024_015",
+                    "stu_2024_016": "STU_2024_016",
+                    "sindhu": "STU_2024_016",
+                    "sindhu.viplav": "STU_2024_016",
+                    "stu_2024_017": "STU_2024_017",
+                    "vaishnavi": "STU_2024_017",
+                    "stu_2024_018": "STU_2024_018",
+                    "satyajit": "STU_2024_018",
+                }
+                canonical_user_id = canonical_id_map.get(demo_key.lower(), demo_key)
                 user_record = {
-                    "id": demo_key,
-                    "username": demo_key,
+                    "id": canonical_user_id,
+                    "username": canonical_user_id,
                     "role": demo_data["role"],
                     "name": demo_data["name"],
                     "email": demo_data["email"],
