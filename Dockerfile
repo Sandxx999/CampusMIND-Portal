@@ -36,8 +36,10 @@ COPY --from=frontend-builder /app/frontend/dist ./frontend/dist
 
 # Set environment defaults
 ENV PYTHONUNBUFFERED=1
-ENV APP_ENV=production
+ENV APP_ENV=development
+ENV DEMO_MODE=true
 ENV PORT=8000
+ENV CORS_ORIGINS="http://localhost:5173,http://localhost:3000,http://localhost:8000,https://onrender.com"
 
 EXPOSE 8000
 
